@@ -20,19 +20,33 @@ One finding contradicts the common advice: by 2026 the em dash had stopped worki
 
 ## Install
 
-Hermes:
+Global, so every agent on the machine can use it (recommended):
 
 ```sh
-cp -r human-writing ~/.hermes/skills/
+npx skills add sl4dk1y/human-writing -g --all
 ```
 
-Claude Code:
+It installs once into `~/.agents/skills/` and links the skill into every supported host it can find: Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, opencode, Amp, Cline, Kilo, Zed, Warp, Droid and the rest of the [supported list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md). Later: `npx skills update human-writing` to pull changes, `npx skills list` to see what is installed.
+
+Choose the hosts yourself:
 
 ```sh
-cp -r human-writing ~/.claude/skills/
+npx skills add sl4dk1y/human-writing -g -a claude-code -a codex -a hermes-agent
 ```
 
-Anything else: feed `SKILL.md` as the instruction and `references/` as reference material.
+Without the CLI: clone once, then link it where each host looks.
+
+```sh
+git clone https://github.com/sl4dk1y/human-writing.git ~/.agents/skills/human-writing
+
+ln -s ~/.agents/skills/human-writing ~/.claude/skills/human-writing   # Claude Code
+ln -s ~/.agents/skills/human-writing ~/.hermes/skills/human-writing   # Hermes
+ln -s ~/.agents/skills/human-writing ~/.cursor/skills/human-writing   # Cursor
+```
+
+Codex, Cline, Pi, Warp and Zed read `~/.agents/skills/` directly, so the clone alone is enough for them.
+
+Any other agent: point it at `SKILL.md` as the instruction and `references/` as reference material. The checker needs `python3` and nothing else.
 
 ## Use the checker
 
