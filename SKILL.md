@@ -3,7 +3,7 @@ name: human-writing
 description: Write and edit prose that does not read as AI-generated.
 license: MIT
 metadata:
-  version: "2.0.0"
+  version: "1.0.0"
 ---
 
 # Human writing
@@ -18,6 +18,8 @@ Machine-written text gives itself away through habits, not through passphrases. 
 - Writing in any language. `references/patterns.md` holds the structural catalogue, `references/evidence.md` holds the measurements and sources, and `references/lang-*.md` holds per-language markers and typography.
 
 Not for code, logs, legal wording, or anything where the exact formulation is the point. There the goal is the opposite: remove variation.
+
+Language follows the audience, not the conversation. Chat replies stay in the user's language. An artifact meant for publication (a README, a SKILL.md, docs in a public repo) is written in English even when the discussion around it was in another language, with examples left in their own language where the examples are the subject.
 
 ## The one idea
 
@@ -77,6 +79,8 @@ python3 scripts/ai_tells.py text.md --json         # numbers only
 The script counts dash, bold, list and heading density, the spread of sentence lengths, matches against per-language phrase lists, closing formulas and staged openers. It strips code, URLs, quotations and `> ` blocks before counting, because a guide about stock phrases would otherwise flag its own examples. The cost is that a quoted phrase never shows up in the report, which does not mean it is absent.
 
 The thresholds come from published corpora, but they are heuristics, not verdicts. `!!` means look at it with your eyes, ` ·` means a soft signal that proves nothing alone. The script will happily flag headings and lists in any structured document, so check that mark against the genre instead of editing it away: an instruction needs headings, an email does not.
+
+The two rhythm measures, mean sentence length and its spread, are reported but never judged below roughly 200 words and 12 sentences. At that size the spread varies as much inside one author as between authors, so a short text always shows ` ·` there and a `!!` only means something on a long one.
 
 One limitation to expect: a document that lists markers as examples (like these language packs) reports its own lists as phrase hits, because only quotations and blockquotes are masked, not bare bullet points. On that kind of file, read the counts and ignore them.
 
