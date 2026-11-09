@@ -1,6 +1,6 @@
 # human-writing
 
-A skill for coding agents (Hermes, Claude Code, Cursor, anything that reads a `SKILL.md`): how to write and edit prose so it does not read as machine-generated.
+A skill for coding agents (Hermes, Codex, Claude Code, Cursor, anything that reads a `SKILL.md`): how to write and edit prose so it does not read as machine-generated.
 
 What is inside is not a list of banned words but the habits that give machine text away: even rhythm, evaluation instead of fact, a thought announced instead of made, importance attached to objects, formatting used as punctuation. Word lists expire with each model release; the habits last years.
 
